@@ -8,6 +8,3 @@ datasmith_file = unreal.DatasmithSceneElement.construct_datasmith_scene_from_fil
 if datasmith_file == None:
     print "Failed to Load Rhino File as Datasmith Element"
     quit()
-else:
-    print "Datasmith Element Successfully Created!"
-
