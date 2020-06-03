@@ -8,3 +8,7 @@ datasmith_file = unreal.DatasmithSceneElement.construct_datasmith_scene_from_fil
 if datasmith_file == None:
     print "Failed to Load Rhino File as Datasmith Element"
     quit()
+#load the meshes, if you get a null static mesh add it to a list ot remove or directly remove it
+
+parts_list = datasmith_file.get_all_mesh_actors()
+print parts_list
