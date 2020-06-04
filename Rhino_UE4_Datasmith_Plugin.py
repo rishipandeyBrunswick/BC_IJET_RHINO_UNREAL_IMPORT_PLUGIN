@@ -22,6 +22,7 @@ if datasmith_file is None:
     print "Failed to Load Rhino File as Datasmith Element"
     quit()
 
+
 #load the meshes, if you get a null static mesh add it to a list ot remove or directly remove it
 #good way to describe process: import data, delete small objectds and null static meshes,
 #build lvl of detail and lighting conditions
@@ -31,16 +32,19 @@ if datasmith_file is None:
 #create a new folder in the content folder for everything
 #thinking we have to load the scene first before accessing meshes and stuff
 
-import_base_options = unreal.DatasmithImportBaseOptions(scene_handling=DatasmithImportScene.CURRENT_LEVEL, 
-                                                    include_geometry=True, 
-                                                    include_material=False, 
-                                                    include_light=False, 
-                                                    include_camera=False, 
-                                                    include_animation=False, 
-                                                    asset_options=[], 
-                                                    static_mesh_options=[DatasmithImportLightmapMin.LIGHTMAP_128, DatasmithImportLightmapMax.LIGHTMAP_512, True, True])
+# import_base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.DatasmithImportScene.CURRENT_LEVEL, 
+#                                                     include_geometry=True, 
+#                                                     include_material=False, 
+#                                                     include_light=False, 
+#                                                     include_camera=False, 
+#                                                     include_animation=False, 
+#                                                     asset_options=[], 
+#                                                     static_mesh_options=[unreal.DatasmithImportLightmapMin.LIGHTMAP_128, unreal.DatasmithImportLightmapMax.LIGHTMAP_512, True, True])
 
-import_options = datasmith_file.get_options(unreal.DatasmithImportOptions)
-import_options.base_options = import_base_options
+import_options = datasmith_file.get_options()
+print(import_options)
 
-datasmith_file.import_scene("C:\\Users\\ijet\\Documents\\Unreal Engine\\RhinoUnrealTest\\Content\\RhinoAsset2")
+
+# import_options.base_options = import_base_options
+
+# datasmith_file.import_scene("C:\\Users\\ijet\\Documents\\Unreal Engine\\RhinoUnrealTest\\Content\\RhinoAsset2")
