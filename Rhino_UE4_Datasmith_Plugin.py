@@ -12,6 +12,12 @@ else:
     print "file loading successful" 
 
 #load the meshes, if you get a null static mesh add it to a list ot remove or directly remove it
+#good way to describe process: import data, delete small objectds and null static meshes,
+#build lvl of detail and lighting conditions
+#merge objects (stiching and tesselation and such)
+#materialize objects (S.T. extra data from rhino team)
+#export as asset! 
+
 mesh_list = datasmith_file.get_all_mesh_actors()
 
 print mesh_list
