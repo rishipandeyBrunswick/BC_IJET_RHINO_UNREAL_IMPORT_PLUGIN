@@ -2,6 +2,9 @@
 import unreal
 #Path of Rhino File
 rhino_file_path = "C:\\Users\\ijet\\Desktop\\Rhino_Files\\test.3dm"
+#let folder name be an input in UI 
+import_folder = "Content/" + folder_name
+
 #Initializing Datasmith Element
 #i feel like it isnt working because the cad importer plugin isnt enabled in this action
 #like normally we would have the cad plugin enabled AND datasmith enabled
