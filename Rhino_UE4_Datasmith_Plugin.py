@@ -1,3 +1,5 @@
+#we may have to consider using a udatasmith function or "reimport" after using datsmith
+#then it would be just an optimization tool not an import plugin
 #BC iJet Lab's Rhino Unreal Engine Import Plugin
 import unreal
 
@@ -46,7 +48,12 @@ import_options = datasmith_file.get_options()
 
 import_options.base_options = import_base_options
 
-destination_folder = "Game/RhinoPythonExample"
+destination_folder = "C:\\Users\\ijet\\Documents\\Unreal Projects\\RhinoUnrealTest\\Content\\RhinoAsset2"
+# destination_folder = "C:\\Users"
+# print(unreal.Paths.file_exists(destination_folder))
+result = datasmith_file.import_scene(destination_folder)
 
-datasmith_file.import_scene(destination_folder)
-
+if result.import_succeed:
+    print("import succeeded")
+else:
+    print("import failed")
