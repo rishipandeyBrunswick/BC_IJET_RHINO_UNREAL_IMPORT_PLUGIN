@@ -1,6 +1,9 @@
 #we may have to consider using a udatasmith function or "reimport" after using datsmith
 #then it would be just an optimization tool not an import plugin
 #BC iJet Lab's Rhino Unreal Engine Import Plugin
+
+
+
 import unreal
 
 #Path of Rhino File
@@ -24,6 +27,7 @@ if datasmith_file is None:
     print "Failed to Load Rhino File as Datasmith Element"
     quit()
 
+print(datasmith_file.get_all_mesh_actors())
 #i think there example is outdated, we will have to import first before handling any meshes
 
 #load the meshes, if you get a null static mesh add it to a list ot remove or directly remove it
@@ -48,12 +52,12 @@ import_options = datasmith_file.get_options()
 
 import_options.base_options = import_base_options
 
-destination_folder = "C:\\Users\\ijet\\Documents\\Unreal Projects\\RhinoUnrealTest\\Content\\RhinoAsset2"
+# destination_folder = "C:\\Users\\ijet\\Documents\\Unreal Projects\\RhinoUnrealTest\\Content\\RhinoAsset2"
 # destination_folder = "C:\\Users"
-# print(unreal.Paths.file_exists(destination_folder))
-result = datasmith_file.import_scene(destination_folder)
+# print(unreal.Paths.validate_path(destination_folder))
+# result = datasmith_file.import_scene("C:/Users/ijet/Documents/Unreal Projects/RhinoUnrealTest/Content/RhinoAsset2")
 
-if result.import_succeed:
-    print("import succeeded")
-else:
-    print("import failed")
+# if result.import_succeed:
+    # print("import succeeded")
+# else:
+    # print("import failed")
