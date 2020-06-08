@@ -38,10 +38,10 @@ import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=u
                                                     asset_options=[], 
                                                     static_mesh_options=[unreal.DatasmithImportLightmapMin.LIGHTMAP_128, unreal.DatasmithImportLightmapMax.LIGHTMAP_512, True, True])
                                                     #static_mesh_options=[minLightMap,maxLightMap,generateLightMap-bool,removeDegenerates-bool]
-tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=,
-                                                        max_edge_length= ,
-                                                        normal_tolerance= ,
-                                                        stiching_technique= )
+tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=0.2,
+                                                        max_edge_length=0,
+                                                        normal_tolerance=20,
+                                                        stiching_technique=unreal.DatasmithCADStichingTechnique.STICHING_SEW)
 
 
 print(import_options.tesselation_options)
