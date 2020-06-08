@@ -13,9 +13,6 @@ if not (unreal.Paths.file_exists(rhino_file_path)):
     print "File Does Not Exist"
     quit()
     
-#let folder name be an input in UI 
-#print unreal.Paths.file_exists(import_folder)
-
 #Initializing Datasmith Element
 #i feel like it isnt working because the cad importer plugin isnt enabled in this action
 #like normally we would have the cad plugin enabled AND datasmith enabled
@@ -25,7 +22,6 @@ datasmith_file = unreal.DatasmithSceneElement.construct_datasmith_scene_from_fil
 if datasmith_file is None:
     print "Failed to Load Rhino File as Datasmith Element"
     quit()
-
 
 #load the meshes, if you get a null static mesh add it to a list ot remove or directly remove it
 #good way to describe process: import data, delete small objectds and null static meshes,
@@ -49,10 +45,15 @@ import_options = datasmith_file.get_options()
 
 import_options.base_options = import_base_options
 
-destination_folder = "C:\\Users\\ijet\\Documents\\Unreal Projects\\RhinoUnrealTest\\Content\\RhinoAsset2"
-# destination_folder = "C:\\Users"
-print(unreal.Paths.validate_path(destination_folder))
-result = datasmith_file.import_scene("C:/Users/ijet/Documents/Unreal Projects/RhinoUnrealTest/Content/RhinoAsset2")
+# destination_folder = "C:\\Users\\ijet\\Documents\\Unreal Projects\\RhinoUnrealTest\\Content\\RhinoAsset2"
+# if unreal.Paths.validate_path(destination_folder): 
+    # print("Is a Valid Path")
+# else:
+    # print("Isn't a Valid Path")
+
+# print("Game Source Directory: " + unreal.Paths.game_source_dir())
+#THIS WORKS!!!
+result = datasmith_file.import_scene("/Game/NewImport")
 
 if result.import_succeed:
     print("import succeeded")
