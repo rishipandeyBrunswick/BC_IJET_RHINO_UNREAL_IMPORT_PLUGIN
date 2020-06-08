@@ -42,8 +42,8 @@ tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=0.2,
                                                         normal_tolerance=20,
                                                         stitching_technique=unreal.DatasmithCADStitchingTechnique.STITCHING_SEW)
 
-#set the tesselation options
-
+#set the tesselation options, their api is broken, you can retessalate after import, but how do we stitch?
+#flip inside out surfaces
 print(import_options.tesselation_options)
 # destination_folder = "/Game/NewRhinoFile"
 # result = datasmith_file.import_scene(destination_folder)
@@ -55,4 +55,4 @@ print(import_options.tesselation_options)
 #     print("Import Failed")
 #     quit()
 
-#DESTROY AT ENDw
+#DESTROY AT END
