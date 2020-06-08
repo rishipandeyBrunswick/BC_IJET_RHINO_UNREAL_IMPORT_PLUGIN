@@ -27,7 +27,9 @@ if datasmith_file is None:
 
 
 #build import settings then test import! 
-import_base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.DatasmithImportScene.CURRENT_LEVEL, 
+import_options = datasmith_file.get_options()
+
+import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.DatasmithImportScene.CURRENT_LEVEL, 
                                                     include_geometry=True, 
                                                     include_material=False, 
                                                     include_light=False, 
@@ -35,14 +37,22 @@ import_base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.Da
                                                     include_animation=False, 
                                                     asset_options=[], 
                                                     static_mesh_options=[unreal.DatasmithImportLightmapMin.LIGHTMAP_128, unreal.DatasmithImportLightmapMax.LIGHTMAP_512, True, True])
+                                                    #static_mesh_options=[minLightMap,maxLightMap,generateLightMap-bool,removeDegenerates-bool]
+tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=,
+                                                        max_edge_length= ,
+                                                        normal_tolerance= ,
+                                                        stiching_technique= )
 
-import_options = datasmith_file.get_options()
 
-import_options.base_options = import_base_options
-destination_folder = "/Game/NewRhinoFile"
-result = datasmith_file.import_scene(destination_folder)
+print(import_options.tesselation_options)
 
-if result.import_succeed:
-    print("import succeeded")
-else:
-    print("import failed")
+# destination_folder = "/Game/NewRhinoFile"
+# result = datasmith_file.import_scene(destination_folder)
+
+#merge actors? 
+#implement LOD
+if not result.import_succeed:
+    print("Import Failed")
+    quit()
+
+#DESTROY AT END
