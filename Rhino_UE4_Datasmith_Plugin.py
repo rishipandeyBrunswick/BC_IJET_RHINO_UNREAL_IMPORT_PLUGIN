@@ -41,16 +41,17 @@ import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=u
 tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=0.2,
                                                         max_edge_length=0,
                                                         normal_tolerance=20,
-                                                        stiching_technique=unreal.DatasmithCADStichingTechnique.STICHING_SEW)
+                                                        stitching_technique=unreal.DatasmithCADStitchingTechnique.STITCHING_SEW)
 
-
-print(import_options.tesselation_options)
+#set the tesselation options
+print(datasmith_file.tesselation_options)
 
 # destination_folder = "/Game/NewRhinoFile"
 # result = datasmith_file.import_scene(destination_folder)
 
 #merge actors? 
 #implement LOD
+#imported_meshes array of meshes upon import lod and merging from here
 if not result.import_succeed:
     print("Import Failed")
     quit()
