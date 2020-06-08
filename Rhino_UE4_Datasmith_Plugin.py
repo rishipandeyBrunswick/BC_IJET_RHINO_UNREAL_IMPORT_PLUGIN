@@ -1,12 +1,8 @@
-#we may have to consider using a udatasmith function or "reimport" after using datsmith
-#then it would be just an optimization tool not an import plugin
 #BC iJet Lab's Rhino Unreal Engine Import Plugin
-
-#6/8 Notes: Start with loading the file in, "import", and if that doesn't work explore udatasmith option
 import unreal
 
 #Path of Rhino File
-rhino_file_path = "C:\\Users\\ijet\\Desktop\\Rhino_Files\\test.3dm"
+rhino_file_path = "C:\\Users\\ijet\\Desktop\\Rhino_Files\\test2.3dm"
 
 #Check to make sure the file exists
 if not (unreal.Paths.file_exists(rhino_file_path)):
@@ -14,9 +10,6 @@ if not (unreal.Paths.file_exists(rhino_file_path)):
     quit()
     
 #Initializing Datasmith Element
-#i feel like it isnt working because the cad importer plugin isnt enabled in this action
-#like normally we would have the cad plugin enabled AND datasmith enabled
-#maybe that is why it isnt reading the file
 datasmith_file = unreal.DatasmithSceneElement.construct_datasmith_scene_from_file(rhino_file_path)
 
 if datasmith_file is None:
@@ -32,6 +25,8 @@ if datasmith_file is None:
 #create a new folder in the content folder for everything
 #thinking we have to load the scene first before accessing meshes and stuff
 
+
+#build import settings then test import! 
 import_base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.DatasmithImportScene.CURRENT_LEVEL, 
                                                     include_geometry=True, 
                                                     include_material=False, 
@@ -44,16 +39,8 @@ import_base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.Da
 import_options = datasmith_file.get_options()
 
 import_options.base_options = import_base_options
-
-# destination_folder = "C:\\Users\\ijet\\Documents\\Unreal Projects\\RhinoUnrealTest\\Content\\RhinoAsset2"
-# if unreal.Paths.validate_path(destination_folder): 
-    # print("Is a Valid Path")
-# else:
-    # print("Isn't a Valid Path")
-
-# print("Game Source Directory: " + unreal.Paths.game_source_dir())
-#THIS WORKS!!!
-result = datasmith_file.import_scene("/Game/NewImport")
+destination_folder = "/Game/NewRhinoFile"
+result = datasmith_file.import_scene(destination_folder)
 
 if result.import_succeed:
     print("import succeeded")
