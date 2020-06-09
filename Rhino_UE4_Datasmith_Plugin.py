@@ -57,5 +57,7 @@ if not imported_scene.import_succeed:
 
 #retesselation because pre-tesselation is not supported
 #then LOD and merging
+print("LIST OF IMPORTED STATIC MESHES")
+#this works to access all static meshes
 print(imported_scene.imported_meshes)
 
