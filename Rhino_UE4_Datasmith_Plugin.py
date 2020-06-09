@@ -44,15 +44,18 @@ tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=0.2,
 
 #set the tesselation options, their api is broken, you can retessalate after import, but how do we stitch?
 #flip inside out surfaces
-print(import_options.tesselation_options)
-# destination_folder = "/Game/NewRhinoFile"
-# result = datasmith_file.import_scene(destination_folder)
+
+destination_folder = "/Game/NewRhinoFile"
+imported_scene = datasmith_file.import_scene(destination_folder)
 
 #merge actors? 
 #implement LOD
 #imported_meshes array of meshes upon import lod and merging from here
-# if not result.import_succeed:
-#     print("Import Failed")
-#     quit()
+if not imported_scene.import_succeed:
+    print("Import Failed")
+    quit()
 
-#DESTROY AT END
+#retesselation because pre-tesselation is not supported
+#then LOD and merging
+print(imported_scene.imported_meshes)
+
