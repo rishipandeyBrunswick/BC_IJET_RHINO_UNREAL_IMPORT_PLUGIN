@@ -26,9 +26,15 @@ if datasmith_file is None:
 #thinking we have to load the scene first before accessing meshes and stuff
 
 #take out vray floor
-
+#implementing a setting that allows you to edit the min and max lightmap in the UI is important.
+#this is because super large objects will have overlapping UV's if it isn't large
+#super small objects will not have overlapping UVs even with a 64, so by looking at the number of meshes you can change that.
+#can we catch an overlapping UV's error and improve on it later in the script? ie: you see that the UV's are overlapping at (128,512)
+#then you loop through the meshes and bump it up? then rebuild
 #build import settings then test import! 
 import_options = datasmith_file.get_options()
+light_map_min = unreal.DatasmithImportLightmapMin.LIGHTMAP_512
+light_map_max = unreal.DatasmithImportLightmapMax.LIGHTMAP_1024
 import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.DatasmithImportScene.CURRENT_LEVEL, 
                                                     include_geometry=True, 
                                                     include_material=False, 
