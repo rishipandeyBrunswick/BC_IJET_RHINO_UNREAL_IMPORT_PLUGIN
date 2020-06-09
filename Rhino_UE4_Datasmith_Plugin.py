@@ -25,6 +25,7 @@ if datasmith_file is None:
 #create a new folder in the content folder for everything
 #thinking we have to load the scene first before accessing meshes and stuff
 
+#take out vray floor
 
 #build import settings then test import! 
 import_options = datasmith_file.get_options()
@@ -35,7 +36,7 @@ import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=u
                                                     include_camera=False, 
                                                     include_animation=False, 
                                                     asset_options=[], 
-                                                    static_mesh_options=[unreal.DatasmithImportLightmapMin.LIGHTMAP_128, unreal.DatasmithImportLightmapMax.LIGHTMAP_512, True, True])
+                                                    static_mesh_options=[unreal.DatasmithImportLightmapMin.LIGHTMAP_256, unreal.DatasmithImportLightmapMax.LIGHTMAP_512, True, True])
                                                     #static_mesh_options=[minLightMap,maxLightMap,generateLightMap-bool,removeDegenerates-bool]
 tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=0.2,
                                                         max_edge_length=0,
