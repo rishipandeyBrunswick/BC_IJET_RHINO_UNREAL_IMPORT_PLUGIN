@@ -3,7 +3,7 @@ import unreal
 
 #Path of Rhino File
 rhino_file_path = "C:\\Users\\ijet\\Desktop\\Rhino_Files\\test.3dm"
-
+#two sided materials? 
 #Check to make sure the file exists
 if not (unreal.Paths.file_exists(rhino_file_path)):
     print "File Does Not Exist"
@@ -42,7 +42,7 @@ import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=u
                                                     include_camera=False, 
                                                     include_animation=False, 
                                                     asset_options=[], 
-                                                    static_mesh_options=[unreal.DatasmithImportLightmapMin.LIGHTMAP_256  , unreal.DatasmithImportLightmapMax.LIGHTMAP_512, True, True])
+                                                    static_mesh_options=[light_map_min, light_map_max, True, True])
                                                     #static_mesh_options=[minLightMap,maxLightMap,generateLightMap-bool,removeDegenerates-bool]
 tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=0.2,
                                                         max_edge_length=0,
