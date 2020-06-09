@@ -50,7 +50,7 @@ tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=0.2,
                                                         stitching_technique=unreal.DatasmithCADStitchingTechnique.STITCHING_SEW)
 
 
-destination_folder = "/Game/NewRhinoFile2"
+destination_folder = "/Game/NewRhinoFile2"   
 imported_scene = datasmith_file.import_scene(destination_folder)
 
 if not imported_scene.import_succeed:
