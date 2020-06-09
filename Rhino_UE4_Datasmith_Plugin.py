@@ -2,7 +2,7 @@
 import unreal
 
 #Path of Rhino File
-rhino_file_path = "C:\\Users\\ijet\\Desktop\\Rhino_Files\\test2.3dm"
+rhino_file_path = "C:\\Users\\ijet\\Desktop\\Rhino_Files\\test.3dm"
 
 #Check to make sure the file exists
 if not (unreal.Paths.file_exists(rhino_file_path)):
@@ -42,22 +42,18 @@ tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=0.2,
                                                         normal_tolerance=20,
                                                         stitching_technique=unreal.DatasmithCADStitchingTechnique.STITCHING_SEW)
 
-#set the tesselation options, their api is broken, you can retessalate after import, but how do we stitch?
-#flip inside out surfaces
 
 destination_folder = "/Game/NewRhinoFile"
 imported_scene = datasmith_file.import_scene(destination_folder)
 
-#merge actors? 
-#implement LOD
-#imported_meshes array of meshes upon import lod and merging from here
 if not imported_scene.import_succeed:
     print("Import Failed")
     quit()
+#work on optimizations now! 
 
-#retesselation because pre-tesselation is not supported
-#then LOD and merging
-print("LIST OF IMPORTED STATIC MESHES")
+# print("LIST OF IMPORTED STATIC MESHES")
 #this works to access all static meshes
-print(imported_scene.imported_meshes)
-
+# print(imported_scene.imported_meshes)
+# static_meshes = imported_scene.imported_meshes
+#flip normals, merge, lod
+#uses default tesselation already! or pulls from above maybe, but either way it works
