@@ -36,7 +36,7 @@ import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=u
                                                     include_camera=False, 
                                                     include_animation=False, 
                                                     asset_options=[], 
-                                                    static_mesh_options=[unreal.DatasmithImportLightmapMin.LIGHTMAP_256, unreal.DatasmithImportLightmapMax.LIGHTMAP_512, True, True])
+                                                    static_mesh_options=[unreal.DatasmithImportLightmapMin.LIGHTMAP_256  , unreal.DatasmithImportLightmapMax.LIGHTMAP_512, True, True])
                                                     #static_mesh_options=[minLightMap,maxLightMap,generateLightMap-bool,removeDegenerates-bool]
 tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=0.2,
                                                         max_edge_length=0,
@@ -44,7 +44,7 @@ tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=0.2,
                                                         stitching_technique=unreal.DatasmithCADStitchingTechnique.STITCHING_SEW)
 
 
-destination_folder = "/Game/NewRhinoFile"
+destination_folder = "/Game/NewRhinoFile2"
 imported_scene = datasmith_file.import_scene(destination_folder)
 
 if not imported_scene.import_succeed:
