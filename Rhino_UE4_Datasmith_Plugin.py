@@ -57,7 +57,11 @@ if not imported_scene.import_succeed:
 #FLIP NORMALS looks like the solution would be to set everything to have a two sided material
 #Two sided materials MAY produce artifacts under static lighting!
 #Material settings -> double sided this is the first attempt fix.
-
+# i believe the type is Static Mesh Actor, can confirm once we compile with unreal
 static_meshes = imported_scene.imported_meshes
 
-
+for sm in static_meshes:
+    sm.
+    # sm.static_mesh_component #this gets the StaticMeshComponent object from the StaticMeshActor
+    # unreal.Material.two_sided = True this is the expression! 
+    # link it to the static mesh
