@@ -54,7 +54,10 @@ if not imported_scene.import_succeed:
     print("Import Failed")
     quit()
 
-#FLIP NORMALS
+#FLIP NORMALS looks like the solution would be to set everything to have a two sided material
+#Two sided materials MAY produce artifacts under static lighting!
+#Material settings -> double sided this is the first attempt fix.
+
 static_meshes = imported_scene.imported_meshes
 
 
