@@ -3,7 +3,7 @@ import unreal
 
 #Path of Rhino File
 rhino_file_path = "C:\\Users\\ijet\\Desktop\\Rhino_Files\\test.3dm"
-#two sided materials? 
+
 #Check to make sure the file exists
 if not (unreal.Paths.file_exists(rhino_file_path)):
     print "File Does Not Exist"
@@ -16,25 +16,19 @@ if datasmith_file is None:
     print "Failed to Load Rhino File as Datasmith Element"
     quit()
 
-#load the meshes, if you get a null static mesh add it to a list ot remove or directly remove it
-#good way to describe process: import data, delete small objectds and null static meshes,
-#build lvl of detail and lighting conditions
-#merge objects (stiching and tesselation and such)
-#materialize objects (S.T. extra data from rhino team)
-#export as asset! 
-#create a new folder in the content folder for everything
-#thinking we have to load the scene first before accessing meshes and stuff
-
-#take out vray floor
-#implementing a setting that allows you to edit the min and max lightmap in the UI is important.
-#this is because super large objects will have overlapping UV's if it isn't large
-#super small objects will not have overlapping UVs even with a 64, so by looking at the number of meshes you can change that.
-#can we catch an overlapping UV's error and improve on it later in the script? ie: you see that the UV's are overlapping at (128,512)
-#then you loop through the meshes and bump it up? then rebuild
-#build import settings then test import! 
+#Set Import Options for Datasmith Scene
 import_options = datasmith_file.get_options()
+#Create min and max for lightmap. This will be a scroll down option in UI.
+#Larger Geometry should be atleast in the lightmap bounds of [512,1024]
 light_map_min = unreal.DatasmithImportLightmapMin.LIGHTMAP_512
 light_map_max = unreal.DatasmithImportLightmapMax.LIGHTMAP_1024
+#Create Base Options
+#scene_handling = (level the scene should be imported to)
+#include_geomtry = (bool of whether meshes should be included)
+#include_material = (bool of whether materials should be included) does this work with vray? FIX THIS
+#include_light,camera,and animation all set to false as they do not pertain to this project
+#asset_options = [] because there are no fields in this object
+#static_mesh_options=[minLightMap,maxLightMap,generateLightMap-bool,removeDegenerates-bool]
 import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.DatasmithImportScene.CURRENT_LEVEL, 
                                                     include_geometry=True, 
                                                     include_material=False, 
@@ -43,24 +37,24 @@ import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=u
                                                     include_animation=False, 
                                                     asset_options=[], 
                                                     static_mesh_options=[light_map_min, light_map_max, True, True])
-                                                    #static_mesh_options=[minLightMap,maxLightMap,generateLightMap-bool,removeDegenerates-bool]
+
+#tesselation_options may no be necessary as they are the same as the default ones
 tesselation_options = unreal.DatasmithTessellationOptions(chord_tolerance=0.2,
                                                         max_edge_length=0,
                                                         normal_tolerance=20,
                                                         stitching_technique=unreal.DatasmithCADStitchingTechnique.STITCHING_SEW)
 
-
-destination_folder = "/Game/NewRhinoFile2"   
+#In Game Destination Folder
+destination_folder = "/Game/NewRhinoFile2"  
+#Imported Datasmith Scene 
 imported_scene = datasmith_file.import_scene(destination_folder)
+
 
 if not imported_scene.import_succeed:
     print("Import Failed")
     quit()
-#work on optimizations now! 
 
-# print("LIST OF IMPORTED STATIC MESHES")
-#this works to access all static meshes
-# print(imported_scene.imported_meshes)
-# static_meshes = imported_scene.imported_meshes
-#flip normals, merge, lod
-#uses default tesselation already! or pulls from above maybe, but either way it works
+#FLIP NORMALS
+static_meshes = imported_scene.imported_meshes
+
+
