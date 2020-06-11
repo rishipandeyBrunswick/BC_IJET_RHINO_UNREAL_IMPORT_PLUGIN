@@ -29,7 +29,7 @@ light_map_max = unreal.DatasmithImportLightmapMax.LIGHTMAP_1024
 #include_light,camera,and animation all set to false as they do not pertain to this project
 #asset_options = [] because there are no fields in this object
 #static_mesh_options=[minLightMap,maxLightMap,generateLightMap-bool,removeDegenerates-bool]
-import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.DatasmithImportScene.CURRENT_LEVEL, 
+import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.DatasmithImportScene.NEW_LEVEL, 
                                                     include_geometry=True, 
                                                     include_material=False, 
                                                     include_light=False, 
