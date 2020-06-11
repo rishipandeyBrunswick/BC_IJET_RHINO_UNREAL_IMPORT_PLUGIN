@@ -2,7 +2,7 @@
 import unreal
 
 #Path of Rhino File
-rhino_file_path = "C:\\Users\\ijet\\Desktop\\Rhino_Files\\test.3dm"
+rhino_file_path = "C:\\Users\\ijet\\Desktop\\Rhino_Files\\h-22 tropics materialized.3dm"
 
 #Check to make sure the file exists
 if not (unreal.Paths.file_exists(rhino_file_path)):
@@ -58,10 +58,10 @@ if not imported_scene.import_succeed:
 #Two sided materials MAY produce artifacts under static lighting!
 #Material settings -> double sided this is the first attempt fix.
 # i believe the type is Static Mesh Actor, can confirm once we compile with unreal
-static_meshes = imported_scene.imported_meshes
+# static_meshes = imported_scene.imported_meshes
 
-for sm in static_meshes:
-    sm.
-    # sm.static_mesh_component #this gets the StaticMeshComponent object from the StaticMeshActor
-    # unreal.Material.two_sided = True this is the expression! 
-    # link it to the static mesh
+# for sm in static_meshes:
+#     sm.
+#     # sm.static_mesh_component #this gets the StaticMeshComponent object from the StaticMeshActor
+#     # unreal.Material.two_sided = True this is the expression! 
+#     # link it to the static mesh
