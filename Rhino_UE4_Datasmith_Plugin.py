@@ -2,7 +2,7 @@
 import unreal
 
 #Path of Rhino File
-rhino_file_path = "C:\\Users\\ijet\\Desktop\\Rhino_Files\\h-22 tropics materialized.3dm"
+rhino_file_path = "C:\\Users\\ijet\\Desktop\\Rhino_Files\\E15 Final.3dm"
 
 #Check to make sure the file exists
 if not (unreal.Paths.file_exists(rhino_file_path)):
@@ -29,7 +29,7 @@ light_map_max = unreal.DatasmithImportLightmapMax.LIGHTMAP_1024
 #include_light,camera,and animation all set to false as they do not pertain to this project
 #asset_options = [] because there are no fields in this object
 #static_mesh_options=[minLightMap,maxLightMap,generateLightMap-bool,removeDegenerates-bool]
-import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.DatasmithImportScene.NEW_LEVEL, 
+import_options.base_options = unreal.DatasmithImportBaseOptions(scene_handling=unreal.DatasmithImportScene.CURRENT_LEVEL, 
                                                     include_geometry=True, 
                                                     include_material=False, 
                                                     include_light=False, 
